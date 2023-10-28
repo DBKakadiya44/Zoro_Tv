@@ -8,5 +8,8 @@
         <item name="cornerSize">60dp</item>
     </style>
 
+    <string name="app_name_firebase">Zoro TV</string>
+    <string name="rate2">Rate</string>
+    <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
 
 </resources>

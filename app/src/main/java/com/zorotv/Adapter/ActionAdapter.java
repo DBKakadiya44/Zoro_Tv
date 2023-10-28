@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.zorotv.Ads.AdmCommon;
+import com.zorotv.Ads.AdsCallBack;
 import com.zorotv.DataModel.MovieData;
 import com.zorotv.HomeActivity;
 import com.zorotv.PlayActivity;
@@ -44,11 +46,31 @@ public class ActionAdapter extends RecyclerView.Adapter<ActionAdapter.ViewHolder
 //        holder.imageView.setImageResource(R.drawable.movie);
 
         holder.imageView.setOnClickListener(view -> {
-            Intent intent = new Intent(homeActivity , PlayActivity.class);
-            intent.putExtra("image",data.get(position).getBanner());
-            intent.putExtra("name","Action Movie");
-            intent.putExtra("about",data.get(position).getAbout());
-            homeActivity.startActivity(intent);
+
+            AdmCommon.getInstance().mInterstitialAdBackPressClickCount++;
+            AdmCommon.getInstance().loadOrShowAdmInterstial(false,homeActivity, new AdsCallBack() {
+                @Override
+                public void onAdsClose() {
+                    Intent intent = new Intent(homeActivity , PlayActivity.class);
+                    intent.putExtra("image",data.get(position).getBanner());
+                    intent.putExtra("name","Action Movie");
+                    intent.putExtra("about",data.get(position).getAbout());
+                    intent.putExtra("moviename",data.get(position).getName());
+                    intent.putExtra("link",data.get(position).getLink());
+                    homeActivity.startActivity(intent);
+                }
+                @Override
+                public void onLoading() {
+                    Intent intent = new Intent(homeActivity , PlayActivity.class);
+                    intent.putExtra("image",data.get(position).getBanner());
+                    intent.putExtra("name","Action Movie");
+                    intent.putExtra("about",data.get(position).getAbout());
+                    intent.putExtra("moviename",data.get(position).getName());
+                    intent.putExtra("link",data.get(position).getLink());
+                    homeActivity.startActivity(intent);
+                }
+            });
+
         });
 
     }

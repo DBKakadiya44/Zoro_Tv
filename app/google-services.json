@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "936533303866",
+    "project_id": "zoro-tv-56bd1",
+    "storage_bucket": "zoro-tv-56bd1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936533303866:android:4b39f2a7ffd9245e26cb03",
+        "android_client_info": {
+          "package_name": "com.zorotv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9dxM_qAMQgsHdQh5hP4nODyuogXh1sME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

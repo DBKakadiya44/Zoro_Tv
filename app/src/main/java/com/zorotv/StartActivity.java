@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -29,6 +30,9 @@ import com.zorotv.Adapter.RomanceAdapter;
 import com.zorotv.Adapter.SciFiAdapter;
 import com.zorotv.Adapter.ThrillerAdapter;
 import com.zorotv.Adapter.TopRatedAdapter;
+import com.zorotv.Ads.AdmCommon;
+import com.zorotv.Ads.AdsCallBack;
+import com.zorotv.Ads.Ads_Preference;
 import com.zorotv.DataModel.MovieData;
 import com.zorotv.databinding.ActivityStartBinding;
 
@@ -39,6 +43,7 @@ import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
     ActivityStartBinding b;
+    Ads_Preference adsDataPrefs;
     ArrayList arrayList;
     public static ArrayList<MovieData> Top_Rateddata = new ArrayList<>();
     public static ArrayList<MovieData> Actiondata = new ArrayList<>();
@@ -64,8 +69,23 @@ public class StartActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.appbar));
 
+        AdmCommon.getInstance().AmNativeLoad(this,b.llNativeBig, true);
+        adsDataPrefs = new Ads_Preference(this);
+
         b.tvStart.setOnClickListener(view -> {
-            startActivity(new Intent(this , NameActivity.class));
+
+            AdmCommon.getInstance().mInterstitialAdBackPressClickCount++;
+            AdmCommon.getInstance().loadOrShowAdmInterstial(false,this, new AdsCallBack() {
+                @Override
+                public void onAdsClose() {
+                    startActivity(new Intent(StartActivity.this , NameActivity.class));
+                }
+                @Override
+                public void onLoading() {
+                    startActivity(new Intent(StartActivity.this , NameActivity.class));
+                }
+            });
+
         });
 
         getData();

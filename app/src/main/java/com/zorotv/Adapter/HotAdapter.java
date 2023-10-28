@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.zorotv.Ads.AdmCommon;
+import com.zorotv.Ads.AdsCallBack;
 import com.zorotv.DataModel.MovieData;
 import com.zorotv.PlayActivity;
 import com.zorotv.R;
@@ -30,7 +32,7 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder>
     @NonNull
     @Override
     public HotAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(playActivity).inflate(R.layout.item_movie,parent,false);
+        View view = LayoutInflater.from(playActivity).inflate(R.layout.item_movies2,parent,false);
         return new ViewHolder(view);
     }
 
@@ -44,12 +46,34 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder>
 
 //        holder.imageView.setImageResource(R.drawable.movie);
 
+
+
         holder.imageView.setOnClickListener(view -> {
-            Intent intent = new Intent(playActivity , PlayActivity.class);
-            intent.putExtra("image",data.get(position).getBanner());
-            intent.putExtra("name",category);
-            intent.putExtra("about",data.get(position).getAbout());
-            playActivity.startActivity(intent);
+
+            AdmCommon.getInstance().mInterstitialAdBackPressClickCount++;
+            AdmCommon.getInstance().loadOrShowAdmInterstial(false,playActivity, new AdsCallBack() {
+                @Override
+                public void onAdsClose() {
+                    Intent intent = new Intent(playActivity , PlayActivity.class);
+                    intent.putExtra("image",data.get(position).getBanner());
+                    intent.putExtra("name",category);
+                    intent.putExtra("about",data.get(position).getAbout());
+                    intent.putExtra("moviename",data.get(position).getName());
+                    intent.putExtra("link",data.get(position).getLink());
+                    playActivity.startActivity(intent);
+                }
+                @Override
+                public void onLoading() {
+                    Intent intent = new Intent(playActivity , PlayActivity.class);
+                    intent.putExtra("image",data.get(position).getBanner());
+                    intent.putExtra("name",category);
+                    intent.putExtra("about",data.get(position).getAbout());
+                    intent.putExtra("moviename",data.get(position).getName());
+                    intent.putExtra("link",data.get(position).getLink());
+                    playActivity.startActivity(intent);
+                }
+            });
+
         });
     }
 

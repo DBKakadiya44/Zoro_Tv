@@ -9,10 +9,14 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.zorotv.Ads.AdmCommon;
+import com.zorotv.Ads.AdsCallBack;
+import com.zorotv.Ads.Ads_Preference;
 import com.zorotv.databinding.ActivityGenderBinding;
 
 public class GenderActivity extends AppCompatActivity {
 ActivityGenderBinding b;
+    Ads_Preference adsDataPrefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +28,23 @@ ActivityGenderBinding b;
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.appbar));
 
+        AdmCommon.getInstance().AmNativeLoad(this,b.llNativeBig, true);
+        adsDataPrefs = new Ads_Preference(this);
+
         b.tvStart.setOnClickListener(v -> {
-            startActivity(new Intent(this , AgeActivity.class));
+
+            AdmCommon.getInstance().mInterstitialAdBackPressClickCount++;
+            AdmCommon.getInstance().loadOrShowAdmInterstial(false,this, new AdsCallBack() {
+                @Override
+                public void onAdsClose() {
+                    startActivity(new Intent(GenderActivity.this , AgeActivity.class));
+                }
+                @Override
+                public void onLoading() {
+                    startActivity(new Intent(GenderActivity.this , AgeActivity.class));
+                }
+            });
+
         });
 
         b.img11.setOnClickListener(view -> {
@@ -37,6 +56,8 @@ ActivityGenderBinding b;
             b.img12.setBackgroundResource(R.drawable.round_border);
             b.img11.setBackgroundColor(getColor(R.color.mainbg));
         });
+
+
 
     }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/_250sdp"
+    android:layout_height="@dimen/_200sdp"
+    android:layout_gravity="center"
+    android:gravity="center_horizontal"
+    android:padding="@dimen/_10sdp"
+    android:background="@drawable/btn_wa"
+    android:orientation="vertical">
+
+<ImageView
+    android:layout_width="@dimen/_50sdp"
+    android:layout_height="@dimen/_50sdp"
+    android:layout_gravity="center_horizontal"
+    android:src="@drawable/rate_top"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_8sdp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="We Like to You!"
+        android:textSize="@dimen/_14sdp"
+        android:textColor="@color/white"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/rate_star"/>
+    <TextView
+        android:id="@+id/tvNow"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="@dimen/_14sdp"
+        android:textColor="@color/white"
+        android:text="Rate"
+        android:background="@drawable/btn_wa"
+        android:backgroundTint="#FF961E" />
+    <TextView
+        android:id="@+id/tvLater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:gravity="center"
+        android:text="Not Now"
+        android:textColor="#99FFFFFF"
+        android:textSize="15sp" />
+
+
+</LinearLayout>

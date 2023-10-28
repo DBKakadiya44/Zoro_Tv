@@ -4,4 +4,10 @@
     <color name="mainbg">#000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="appbar">#F37500</color>
+
+    <color name="main_bg">#000000</color>
+    <color name="colorPrimary">#67FFEB</color>
+    <color name="colorAccent">#ff000000</color>
+    <color name="purple_200">#4D47FD</color>
+
 </resources>

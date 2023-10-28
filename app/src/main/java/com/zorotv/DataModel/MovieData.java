@@ -13,6 +13,9 @@ public class MovieData {
     @Expose
     private String about;
 
+    @Expose
+    private String link;
+
     public String getName() {
         return name;
     }
@@ -45,4 +48,11 @@ public class MovieData {
         this.about = about;
     }
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 }

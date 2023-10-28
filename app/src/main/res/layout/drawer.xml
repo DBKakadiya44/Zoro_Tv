@@ -58,13 +58,12 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/mainbg"
-        android:paddingHorizontal="20dp"
         android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/llBanner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
@@ -75,14 +74,21 @@
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
-            <androidx.viewpager.widget.ViewPager
+            <LinearLayout
+                android:id="@+id/llNativeBig"
                 android:layout_width="match_parent"
-                android:layout_height="240dp" />
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:orientation="vertical">
+
+                <include layout="@layout/ad_view_big" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Popular Stars:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -91,12 +97,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPopularStars"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Top Rated:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -105,12 +113,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTopRated"
                 android:layout_width="match_parent"
-                android:layout_height="145dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Action:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -119,12 +129,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvAction"
                 android:layout_width="match_parent"
-                android:layout_height="145dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Adventure:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -133,12 +145,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvAdventure"
                 android:layout_width="match_parent"
-                android:layout_height="145dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Comedy:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -147,12 +161,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvComedy"
                 android:layout_width="match_parent"
-                android:layout_height="145dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Drama:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -161,12 +177,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvDrama"
                 android:layout_width="match_parent"
-                android:layout_height="145dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Fantasy:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -175,12 +193,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvFantasy"
                 android:layout_width="match_parent"
-                android:layout_height="145dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Historical:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -189,12 +209,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHistorical"
                 android:layout_width="match_parent"
-                android:layout_height="145dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Horror:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -203,12 +225,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHorror"
                 android:layout_width="match_parent"
-                android:layout_height="145dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Mystery:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -217,12 +241,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMystery"
                 android:layout_width="match_parent"
-                android:layout_height="145dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Romance:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -231,12 +257,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvRomance"
                 android:layout_width="match_parent"
-                android:layout_height="145dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Sci-Fi:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -245,12 +273,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvSciFi"
                 android:layout_width="match_parent"
-                android:layout_height="145dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
                 android:text="Thriller:"
                 android:textColor="@color/appbar"
                 android:textSize="20sp"
@@ -259,10 +289,21 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvThriller"
                 android:layout_width="match_parent"
-                android:layout_height="145dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp" />
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/llBanner"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

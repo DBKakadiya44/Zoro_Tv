@@ -1,5 +1,6 @@
 package com.zorotv.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.zorotv.Ads.AdmCommon;
+import com.zorotv.Ads.AdsCallBack;
 import com.zorotv.HomeActivity;
 import com.zorotv.R;
 
@@ -34,6 +37,21 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
     public void onBindViewHolder(@NonNull PopularAdapter.ViewHolder holder, int position) {
         holder.imageView.setImageResource(image[position]);
         holder.textView.setText(""+name[position]);
+
+        holder.imageView.setOnClickListener(view -> {
+            AdmCommon.getInstance().mInterstitialAdBackPressClickCount++;
+            AdmCommon.getInstance().loadOrShowAdmInterstial(false,homeActivity, new AdsCallBack() {
+                @Override
+                public void onAdsClose() {
+
+                }
+                @Override
+                public void onLoading() {
+
+                }
+            });
+        });
+
     }
 
     @Override

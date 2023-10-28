@@ -9,6 +9,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.zorotv.Ads.AdmCommon;
+import com.zorotv.Ads.AdsCallBack;
 import com.zorotv.databinding.ActivityPrivacyBinding;
 
 public class PrivacyActivity extends AppCompatActivity {
@@ -26,11 +28,27 @@ ActivityPrivacyBinding b;
 
         b.textView.setOnClickListener(v -> {
 
-            if(b.chechbox.isChecked()){
-                startActivity(new Intent(this , MainActivity.class));
-            }else {
-                Toast.makeText(this, "Accept terms", Toast.LENGTH_SHORT).show();
-            }
+            AdmCommon.getInstance().mInterstitialAdBackPressClickCount++;
+            AdmCommon.getInstance().loadOrShowAdmInterstial(false,this, new AdsCallBack() {
+                @Override
+                public void onAdsClose() {
+                    if(b.chechbox.isChecked()){
+                        startActivity(new Intent(PrivacyActivity.this , MainActivity.class));
+                    }else {
+                        Toast.makeText(PrivacyActivity.this, "Accept terms", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                @Override
+                public void onLoading() {
+                    if(b.chechbox.isChecked()){
+                        startActivity(new Intent(PrivacyActivity.this , MainActivity.class));
+                    }else {
+                        Toast.makeText(PrivacyActivity.this, "Accept terms", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+
 
         });
     }
